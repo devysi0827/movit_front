@@ -19,7 +19,8 @@ const routes = [
     component: Signup
   },
   {
-    path: '/',
+    // 경로 재수정할 것
+    path: '/movies',
     name: 'Home',
     component: Home
   },
