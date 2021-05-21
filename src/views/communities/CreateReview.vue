@@ -36,6 +36,8 @@ export default {
       return config
     },
     createReview: function () {
+      console.log('1')
+      console.log(this)
       const reviewItem = {
         title: this.reviewData.title,
         content: this.reviewData.content
@@ -51,6 +53,8 @@ export default {
           .then((res) => {
             console.log(res)
             this.$emit('complete')
+            this.reviewData.title = ''
+            this.reviewData.content = ''
           })
           .catch((err) => {
             console.log(err)
