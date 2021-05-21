@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Login from '@/views/accounts/LoginView.vue'
 import Signup from '@/views/accounts/SignupView.vue'
 import Home from '@/views/mains/HomeView.vue'
- 
+import review from '@/views/communities/ReviewView.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +23,11 @@ const routes = [
     path: '/movies',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/review',
+    name: 'Review',
+    component: review
   },
 ]
 
