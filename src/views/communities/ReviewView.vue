@@ -1,11 +1,13 @@
 <template>
   <div>
     <h1>this is reviewview</h1>
+    
     <CreateReview @complete="getReviews"/>
     <ul>
       <li v-for="review in reviews" :key="`review_${review.id}`" style="background-color: #ffc0cb;">
         <p>title: {{ review.title }}</p>
         <p>content: {{ review.content }}</p>
+        <p>username: {{UserName}}</p>
         <button @click="deleteReviews(review)" style="background-color: #4CAF50;" class="btn">X</button>
         <hr>
       </li>
@@ -15,6 +17,7 @@
 
 <script>
 import axios from'axios'
+import jwt_decode from "jwt-decode"
 import CreateReview from './CreateReview.vue'
 
 export default {
@@ -26,6 +29,7 @@ export default {
  data: function () {
     return {
       reviews: null,
+      UserName: null,
     }
   },
 
@@ -67,32 +71,17 @@ export default {
           console.log(err)
         })
     },
-    // updateTodoStatus: function (todo) {
-    //   const todoItem = {
-    //     ...todo,
-    //     completed: !todo.completed
-    //   }
-
-    //   axios({
-    //     method: 'put',
-    //     url: `http://127.0.0.1:8000/todos/${todo.id}/`,
-    //     data: todoItem,
-    //     headers: this.setToken(),
-    //   })
-    //     .then((res) => {
-    //       console.log(res)
-    //       todo.completed = !todo.completed
-    //     })
-    //   },
-    // },
   },
   created: function () {
     if (localStorage.getItem('jwt')) {
       this.getReviews()
+      var token = localStorage.jwt
+      this.UserName = jwt_decode(token).username
     } else {
       this.$router.push({name: 'Login'})
     }
-  }
+
+  },
 }
 </script>
 

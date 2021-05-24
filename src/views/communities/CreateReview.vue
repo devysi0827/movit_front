@@ -2,6 +2,7 @@
   <div>
     <div class="card">
       <h1>New Review</h1>
+      
       <div>
         <label for="title">title:</label>
         <input v-model="reviewData.title" id="title" type="text" />
@@ -19,12 +20,13 @@
 
 <script>
 import axios from'axios'
+import jwt_decode from "jwt-decode"
 
 export default {
   name: 'CreateReview',
   data: function () {
     return {
-      reviewData: { title: '', content: '', }
+      reviewData: { title: '', content: '', UserName: {} }
     }
   },
   methods: {
@@ -36,11 +38,10 @@ export default {
       return config
     },
     createReview: function () {
-      console.log('1')
-      console.log(this)
       const reviewItem = {
         title: this.reviewData.title,
-        content: this.reviewData.content
+        content: this.reviewData.content,
+        UserName: jwt_decode(localStorage.jwt).username
       }
       console.log(reviewItem)
       if (reviewItem) {
@@ -55,6 +56,7 @@ export default {
             this.$emit('complete')
             this.reviewData.title = ''
             this.reviewData.content = ''
+            this.reviewData.UserName =  ''
           })
           .catch((err) => {
             console.log(err)
@@ -63,4 +65,5 @@ export default {
     },
   }
 }
+
 </script>
