@@ -5,6 +5,8 @@ import Signup from '@/views/accounts/SignupView.vue'
 import Home from '@/views/mains/HomeView.vue'
 import review from '@/views/communities/ReviewView.vue'
 import MovieRecommendation from '@/views/recommendations/MovieRecommendationView.vue'
+import Profile from '@/views/profiles/ProfileView.vue'
+
 
 Vue.use(VueRouter)
 
@@ -35,6 +37,12 @@ const routes = [
     name: 'MovieRecommendation',
     component: MovieRecommendation
   },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
+  },
+
 ]
 
 const router = new VueRouter({

@@ -12,7 +12,10 @@
   </div>
    <ul>
       <li v-for="comment in comments" :key="`${comment.id}`" style="background-color: #6464cd;">
-        <p>comment: {{comment.id}}</p>
+        <b-avatar :src="gravatar(comment.email)" size="6rem"></b-avatar>
+        <p>user: @{{comment.username}}</p>
+        <p>nickname: {{comment.nickname}}</p>
+        <!-- <p>comment: {{comment.id}}</p> -->
         <p>content: {{ comment.content }}</p>
         <p>createtime: {{ comment.created_at }}</p>
         <p>updatetime: {{ comment.updated_at }}</p>
@@ -26,7 +29,9 @@
 </template>
 
 <script>
+import md5 from "md5";
 import axios from'axios'
+import jwt_decode from "jwt-decode"
 export default {
   name: "CreateReviewComment",
   data() {
@@ -69,9 +74,14 @@ export default {
     closeComment() {
       this.comments = null
     },
+    gravatar(mail) {
+      const hash = md5(mail);
+      return `https://www.gravatar.com/avatar/${hash}`;
+    },
     createComment() {
       const commentItem = {
         content: this.commentData.content,
+        UserName: jwt_decode(localStorage.jwt).username,
       }
       if (commentItem) {
         axios({
@@ -107,6 +117,7 @@ export default {
     },
 
   },
+  
 }
 
 </script>
