@@ -17,7 +17,7 @@
     
     <hr>
     <h1>profile</h1>
-    <h2>선택적으로 입력하세요</h2>
+    <h2>선택사항입니다</h2>
     <div>
       <label for="nickname">닉네임: </label>
       <input v-model="credentials.nickname" type="text">
@@ -32,8 +32,14 @@
       <label for="introduce">자기소개: </label>
       <input v-model="credentials.introduce" type="text">
     </div>
+    <div>
+      <label for="email">e-mail: </label>
+      <input v-model="credentials.email" type="text">
+    </div>
 
     <button @click="signup(credentials)">회원가입</button>
+    <hr>
+    
   </div>
   
 </template>
@@ -54,6 +60,7 @@ export default {
         nickname: null,
         profileImage: null,
         introduce: null,
+        email: null,
       }
     }
   },

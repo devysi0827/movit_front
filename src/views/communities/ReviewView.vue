@@ -9,10 +9,12 @@
         <p>content: {{ review.content }}</p>
         <p>username:@{{review.username}}</p>
         <p>NickName: {{review.nickname}}</p>
+        <p>createtime: {{ review.created_at }}</p>
+        <p>updatetime: {{ review.updated_at }}</p>
         <hr>
-        <CreateReviewComment/>
+          <CreateReviewComment :reviewId= review.id />
         <div>
-          <button  utton @click="deleteReviews(review)" style="background-color: #4CAF50;" class="btn">delete</button>
+          <button @click="deleteReviews(review)" style="background-color: #4CAF50;" class="btn">delete</button>
         </div>
         <hr>
       </li>
@@ -38,7 +40,8 @@ export default {
       reviews: null,
       UserName: null,
       nickname: null,
-      emitData: null
+      emitData: null,
+    
     }
   },
 

@@ -19,33 +19,23 @@
 </template>
 
 <script>
-// import Content from "./Content"; 
-// import ModalView from "./ModalView";
 import ModalContent from "./ModalContentView";
 
 export default {
   name: 'MovieCard',
   components: {
     ModalContent,
-    // Content,
-    // ModalView,
   },
   props: {
     movie: Object
   },
   data: function() {
     return{
-      // isModalViewed:false,
+
       modalShow: false
 
     }
   },
-  methods: {
-    // modalStart: function () {
-    //   this.$emit('openmodal')
-    //   console.log(1)
-    // },
-  }
 }
 </script>
 
