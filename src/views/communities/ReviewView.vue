@@ -7,8 +7,13 @@
       <li v-for="review in reviews" :key="`review_${review.id}`" style="background-color: #ffc0cb;">
         <p>title: {{ review.title }}</p>
         <p>content: {{ review.content }}</p>
-        <p>username: {{UserName}}</p>
-        <button @click="deleteReviews(review)" style="background-color: #4CAF50;" class="btn">X</button>
+        <p>username:@{{review.username}}</p>
+        <p>NickName: {{review.nickname}}</p>
+        <hr>
+        <CreateReviewComment/>
+        <div>
+          <button  utton @click="deleteReviews(review)" style="background-color: #4CAF50;" class="btn">delete</button>
+        </div>
         <hr>
       </li>
     </ul>
@@ -19,17 +24,21 @@
 import axios from'axios'
 import jwt_decode from "jwt-decode"
 import CreateReview from './CreateReview.vue'
+import CreateReviewComment from './CreateReviewComment.vue'
 
 export default {
   name: 'Review',
   components : {
-    CreateReview
+    CreateReview,
+    CreateReviewComment
   },
 
  data: function () {
     return {
       reviews: null,
       UserName: null,
+      nickname: null,
+      emitData: null
     }
   },
 
@@ -42,11 +51,15 @@ export default {
       return config
     },
     // 갱신하는 함수인데 
-    getReviews: function () { 
+    getReviews: function (emitData) { 
+      console.log(1)
+      console.log(emitData)
+
       axios({
         method: 'get',
         url: 'http://127.0.0.1:8000/community/',
-        headers: this.setToken()
+        headers: this.setToken(),
+        
       })
         .then((res) => {
           console.log(res.data)

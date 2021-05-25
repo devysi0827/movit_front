@@ -12,7 +12,7 @@
     <b-modal v-model="modalShow">
       <h2> {{ movie.title}} </h2>
       <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
-
+      <ModalContent/>
     </b-modal>
   </div>
 </div>
@@ -21,10 +21,12 @@
 <script>
 // import Content from "./Content"; 
 // import ModalView from "./ModalView";
+import ModalContent from "./ModalContentView";
 
 export default {
   name: 'MovieCard',
   components: {
+    ModalContent,
     // Content,
     // ModalView,
   },

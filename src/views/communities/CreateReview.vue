@@ -26,7 +26,8 @@ export default {
   name: 'CreateReview',
   data: function () {
     return {
-      reviewData: { title: '', content: '', UserName: {} }
+      reviewData: { title: '', content: '', UserName: '' },
+      emitData: {id: '', title: '', content: '', NickName: '', UserName: ''}
     }
   },
   methods: {
@@ -41,7 +42,7 @@ export default {
       const reviewItem = {
         title: this.reviewData.title,
         content: this.reviewData.content,
-        UserName: jwt_decode(localStorage.jwt).username
+        UserName: jwt_decode(localStorage.jwt).username,
       }
       console.log(reviewItem)
       if (reviewItem) {
@@ -52,8 +53,13 @@ export default {
           headers: this.setToken()
         })
           .then((res) => {
+            console.log(3)
             console.log(res)
-            this.$emit('complete')
+            this.emitData = res.data
+            console.log(2)
+            console.log(this.emitData)
+            this.$emit('complete', this.emitData)
+            // this,reviewData.NickName = 
             this.reviewData.title = ''
             this.reviewData.content = ''
             this.reviewData.UserName =  ''

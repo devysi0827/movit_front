@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h1>this is profile</h1>
+    <h1>this is modalview</h1>
+    
   </div>
 </template>
 
 <script>
 export default {
-  name: "Profile"
+  name: "ModalContent",
 }
 </script>
 
