@@ -33,7 +33,7 @@
     
 
     <button @click="signup(credentials)" class="btn btn-success">회원가입</button>
-    <hr>
+
     
   </div>
   

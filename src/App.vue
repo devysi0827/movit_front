@@ -1,8 +1,22 @@
 <template>
-  <div id="app" style="background-color: #F3EFE4">
-    <div id="nav" >
+  <div id="app">
+    <div id="nav" v-if="$route.name !== 'Home'" style="background-color: #F3EFE4;">
       <span v-if="isLogin">
-        <router-link :to="{name: 'Home'}">Home</router-link> |
+        <router-link :to="{name: 'Home'}" >Home</router-link> |
+        <router-link :to="{name: 'Review'}">Review</router-link> |
+        <router-link :to="{name: 'MovieRecommendation'}">MovieRecommendation</router-link> |
+        <router-link :to="{name: 'Profile'}">Profile</router-link> |
+        <router-link :to="{name: 'Slider'}">Slider</router-link> |
+        <router-link @click.native="logout" to="#">Logout</router-link>
+      </span>
+      <span v-else>
+        <router-link :to="{ name: 'Signup' }">Signup</router-link> |
+        <router-link :to="{ name: 'Login' }">Login</router-link> 
+      </span>
+    </div>
+    <div id="nav" v-if="$route.name == 'Home'" style="background-color: black;">
+      <span v-if="isLogin">
+        <router-link :to="{name: 'Home'}" >Home</router-link> |
         <router-link :to="{name: 'Review'}">Review</router-link> |
         <router-link :to="{name: 'MovieRecommendation'}">MovieRecommendation</router-link> |
         <router-link :to="{name: 'Profile'}">Profile</router-link> |
@@ -43,6 +57,7 @@ export default {
 </script>
 
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

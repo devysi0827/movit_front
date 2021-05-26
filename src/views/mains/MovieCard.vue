@@ -1,15 +1,15 @@
 <template>
 
-<div class="box">
-<div class="card" >
-  <div class="card-body" style="margin:0px; padding:0px;">
-    <!-- <h3 class="card-title">{{ movie.title }}</h3> -->
-    <b-button style=" background-color: #300000" @click="modalShow = !modalShow">
-      <!-- Detail -->
-    <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
-    </b-button>
-  </div>  
-</div>
+<div class="box" style="margin:0px; padding:0px;">
+  <div class="card" style=" background-color: black">
+    <div class="card-body" style="margin:0px; padding:0px;">
+      <!-- <h3 class="card-title">{{ movie.title }}</h3> -->
+      <b-button style=" background-color: black" @click="modalShow = !modalShow">
+        <!-- Detail -->
+        <img class="img-fluid"  v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+      </b-button>
+    </div>  
+  </div>
   <div>
     
     <b-modal v-model="modalShow" size="xl" title="DETAIL"> <!-- 이 안에 어떻게 {{ movie.title}} 넣어요?-->
@@ -48,8 +48,7 @@ export default {
 </script>
 
 <style scoped>
-/* div[class="box"] {
-  position: relative;
-  top: 500px
-} */
+html {
+  background-color: black;
+}
 </style>

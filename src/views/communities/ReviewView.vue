@@ -4,20 +4,26 @@
     <CreateReview @complete="getReviews"/>
     <ul>
       <li v-for="review in reviews" :key="`review_${review.id}`" style="background-color: #F3EFE4; list-style:none; padding:10px;">
-        <div class="card" style="margin:0px; padding: 20px;background-color: white;">
-          <b-avatar :src="gravatar(review.email)" size="6rem"></b-avatar>
-          <p>title: {{ review.title }}</p>
-          <p>content: {{ review.content }}</p>
-          <p>username:@{{review.username}}</p>
-          <p>NickName: {{review.nickname}}</p>
-          <p>createtime: {{ review.created_at }}</p>
-          <p>updatetime: {{ review.updated_at }}</p>
-          <p>email: {{review.email}}</p>
+        <div class="card" style="margin: auto; width: 90%; padding: 20px;background-color: white;">
+          <b-row style="background-color: white; position:relative;">
+            <b-col cols="2" style="background-color: white;">
+              <b-avatar :src="gravatar(review.email)" size="6rem"></b-avatar>
+            </b-col >
+            <b-col cols="8" style="text-align: left; padding:5px; background-color: white;">
+              <!-- <a href="">{{review.nickname}} @{{review.username}}</a> -->
+              <p><span style="font-weight:bold; font-size: 1.1m;">{{review.nickname}}</span> @{{review.username}}</p>
+              <p style="font-weight:bold; font-size: 1.2em;">{{ review.title }}</p>
+              <p style="font-size: 1em;">{{ review.content }}</p>
+              <p style="font-size: 0.9em;">createtime: {{ review.created_at }} updatetime: {{ review.updated_at }}</p>
+            </b-col>
+            <b-col cols="2" style="background-color: white; position:absolute; right:0px; bottom:0px">
+              <button @click="deleteReviews(review)" style="background-color: #EAEAEA; font-size: 0.9em;" class="btn">DELETE</button>
+            </b-col>
+          </b-row>
+          
           <hr>
-            <CreateReviewComment :reviewId= review.id />
-          <div>
-            <button @click="deleteReviews(review)" style="background-color: #4CAF50;" class="btn">delete</button>
-          </div>
+            <CreateReviewComment :reviewId= review.id style="background-color: white;"/>
+          
         </div>
       </li>
     </ul>
@@ -31,6 +37,7 @@ import jwt_decode from "jwt-decode"
 import CreateReview from './CreateReview.vue'
 import CreateReviewComment from './CreateReviewComment.vue'
 
+
 export default {
   name: 'Review',
   components : {
@@ -43,6 +50,7 @@ export default {
        profileData: {
         UserName: '',
       },
+      color_black: false,
       reviews: null,
       UserName: null,
       nickname: null,
@@ -117,3 +125,5 @@ export default {
 }
 </script>
 
+<style>
+</style>

@@ -1,76 +1,162 @@
 <template>
-<div id="container">
-  <p>안녕하세요</p>
+<div>
+  <nav id="nav">
+      <button id="prev" data-increment="-1">Previous</button>
+      <button id="next" data-increment="1">Next</button>
+</nav>
+
+<div class="demoWrapper">
+  <div class="stage">
+    <div class="box">
+      <img src="http://via.placeholder.com/285x285" width="285" height="285">
+    </div>
+    <div class="box">
+      <img src="http://via.placeholder.com/285x285" width="285" height="285">
+    </div>
+    <div class="box">
+    </div>
+    <div class="box">
+    </div>
+    <div class="box">
+    </div>
+    <div class="box">
+    </div>
+    <div class="box">
+    </div>
+    <div class="box">
+    </div>
+    <div class="box">
+    </div>
+    <div class="box">
+    </div>
+    <div class="box">
+    </div>
+    <div class="box"> <b-button style=" background-color: #300000" @click="modalShow = !modalShow">
+      <img src="https://image.tmdb.org/t/p/w500//xCEg6KowNISWvMh8GvPSxtdf9TO.jpg" width="285" height="285">
+    <!-- <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"> -->
+    </b-button>
+     <div>
+    
+    <b-modal v-model="modalShow" size="xl" title="DETAIL"> <!-- 이 안에 어떻게 {{ movie.title}} 넣어요?-->
+      <b-container class="bv-example-row">
+        <b-row>
+          <b-col>
+            <img class="img-fluid" src="https://image.tmdb.org/t/p/w500//xCEg6KowNISWvMh8GvPSxtdf9TO.jpg">
+          </b-col>
+        </b-row>
+      </b-container>
+    </b-modal>
+  </div>
+    </div>
+    <div class="box">
+    </div>
+  </div>
+</div>
+
+<div class="stage">
+
+
+</div>
 </div>
 </template>
 
 <script>
-import gsap from 'gsap'
-const n = 20;
+// import gsap from 'gsap'
+import TweenMax from 'gsap'
+import TweenLite from 'gsap'
+import Linear from 'gsap'
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;
+
 export default {
   name: 'Slider',
+  data: function() {
+    return{
+
+      modalShow: false
+
+    }
+  },
   mounted() {
-    gsap.timeline()
-    .set('#container', {perspective:800})
+    $(window).on("load",function(){
 
-  for (let i=0; i<n; i++){ 
+var boxes = $(".box"),
+    stage = $(".stage");
 
-    let b = document.createElement('div');
-    // let c = document.createElement('p')
-    b.classList.add('box');
-    document.getElementById('container').appendChild(b);
-    // document.getElementById('div').appendChild(c);
-
-    gsap.set(b, {
-      left:'50%',
-      top:'50%',
-      x:'-50%',
-      y:'-50%',
-      z:1000,
-      width:300,
-      height:300,
-      borderRadius:20,
-      background:()=>'hsl('+(i/n*360)+',100%,50%)'
-    });
-    
-    gsap.fromTo(b, {
-      scaleY:0,
-      // opacity:0.7,
-      zIndex:()=>(i<n/2)?-i:i,
-      rotationY:90+i/n*206.5,
-      transformOrigin:String("50% 50% -1060%")
-    },{
-      scaleY:1,
-      duration:1,
-      delay:1-0.5*(i/n),
-      ease:'elastic'
-    })
-    
-    b.onmouseenter = (e)=>{ gsap.to(b, {duration:0.3, rotationX:-14, y:'-130%', ease:'back.out(6)'}); }   // eslint-disable-line no-unused-vars
-    b.onmouseleave = (e)=>{ gsap.to(b, {duration:0.4, rotationX:0, y:'-50%'}); } // eslint-disable-line no-unused-vars
+TweenLite.set(stage, {
+  css: {
+    perspective: 1100,
+    transformStyle: "preserve-3d"
   }
+});
 
-  window.onmousemove = (e)=>{
-    gsap.to('.box', {duration:0.6, rotationY:(i)=>45+i/n*206.5+90*(e.clientX/window.innerWidth) });
+boxes.each(function(index, element) {
+  TweenLite.set(element, {
+    css: {
+      rotationY: index * 360 / 13,
+      transformOrigin: "50% 50% -420"
+    }
+  });
+  TweenMax.to(element, 20, {
+    css: {
+      z:0.01,
+      rotationY: "+=359"
+    },
+    repeat: -1, // 20
+    ease: Linear.easeNone
+  });
+});
+  
+});
+    
+  },
 }
-  }
-
-}
-
 </script>
 
 <style scoped>
-#container {
-  position: absolute;
-  width: 100%;
+html{
+  background-image: linear-gradient(207deg, #B4EC51 0px, #419A4A 100%);
   height: 100%;
-  overflow:hidden;
-  /* background:#000; */
 }
 
-div[class="box"], img {
-  position:absolute;
-  user-select: none;
-  overflow:hidden;  
+body {
+    height:100%;
+}
+
+.demoWrapper {
+  width: 680px;
+  height: 400px;
+  -webkit-font-smoothing: antialiased;
+  margin: 50px auto;
+  padding: 1px;
+}
+
+.stage {
+  height: 325px;
+  margin-top: auto;
+  margin-left: auto;
+  color: #ddd;
+  margin-right: 10px;
+  font-family: Arial, Helvetica, Verdana;
+  position:realtive;
+}
+
+.box {
+  position: absolute;
+  width: 180px;
+  height: 250px;
+  background-color: #06f;
+  display: inline-block;
+  margin: 10px 20px 20px 235px; 
+  display: inline-block;
+  overflow:hidden;
+}
+
+.box > img {
+  width:180px;
+  height:auto;
+  border:1px solid #DDD;
+  outline:0 solid transparent;
 }
 </style>

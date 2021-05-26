@@ -2,10 +2,9 @@
   <div style="background-color: #000000">
     <!-- <Slider /> -->
     <h1> Movies </h1>
-    <div class= "row g-1 row-cols-1 row-cols-sm-2 row-cols-lg-3" style=" margin:0px; padding:0px;">
+    <div class= "row g-1 row-cols-xs-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4" style=" margin:0px; padding:0px; background-color: #000000;">
         <MovieCard v-for="(movie,idx) in movies" :key="idx" :movie="movie" />
     </div>
-
   </div>
 </template>
 
@@ -23,6 +22,7 @@ export default {
   data: function(){
     return { 
       movies: [],
+      color_black: true,
       } 
   },
 
@@ -62,9 +62,18 @@ export default {
       this.saveMovies()
     }
   }
+
 }
 </script>
 
-<style>
-
+<style scoped>
+html {
+  background-color: black;
+}
+#nav {
+  background-color: black;
+}
 </style>
+
+
+

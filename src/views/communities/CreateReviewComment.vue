@@ -1,28 +1,40 @@
 <template>
-<div>
-  <h1>comment tab it will be delete</h1>
+
+
+<div style="background-color: white;">
+  <!-- <h1>comment tab it will be delete</h1> -->
   <!-- <h1>{{reviewId}}</h1> -->
-  <input v-model="commentData.content" type="text">
-  <div>
-    <button @click="createComment"> 댓글달기</button>
+  <b-row style="background-color: white;">
+    <b-col class="textbox" cols="10" style="background-color: white; padding: 0px 0px 0px 10%;">
+      <input v-model="commentData.content" type="text" style="width:100%;">
+    </b-col >
+    <b-col cols="2" style="background-color: white;">
+      <button @click="createComment" class="btn btn-success"> 댓글달기</button>
+    </b-col >
+  </b-row>
+  <div style="background-color: white;">
+    <button @click="seeComment" class="btn"><font-awesome-icon :icon="['far','comment']" size="lg" :style="{ color: 'green' }"/></button>
+    <button @click="closeComment" class="btn"><font-awesome-icon :icon="['fas','comment-slash']" size="lg" :style="{ color: 'green' }"/></button>
   </div>
-  <div>
-    <button @click="seeComment">댓글보기</button>
-    <button @click="closeComment">댓글닫기</button>
-  </div>
-   <ul>
-      <li v-for="comment in comments" :key="`${comment.id}`" style="background-color: #6464cd;">
-        <b-avatar :src="gravatar(comment.email)" size="6rem"></b-avatar>
-        <p>user: @{{comment.username}}</p>
-        <p>nickname: {{comment.nickname}}</p>
-        <!-- <p>comment: {{comment.id}}</p> -->
-        <p>content: {{ comment.content }}</p>
-        <p>createtime: {{ comment.created_at }}</p>
-        <p>updatetime: {{ comment.updated_at }}</p>
-        <button style="background-color: #4CAF50;" class="btn" @click="deleteComment(comment)">delete</button>
+  <ul>
+      <li v-for="comment in comments" :key="`${comment.id}`" style="background-color: white; list-style:none; padding:3px; margin:3px;">
+        <b-row style="background-color: white; position:relative;">
+          <b-col cols="2" style="background-color: white;">
+            <b-avatar :src="gravatar(comment.email)" size="6rem"></b-avatar>
+          </b-col>
+          <b-col cols="8" style="background-color: white; text-align: left; padding:5px;">
+             <p><span style="font-weight:bold; font-size: 1.1m;">{{comment.nickname}}</span> @{{comment.username}}</p>
+            <!-- <p>comment: {{comment.id}}</p> -->
+            <p style="font-size: 1em;">{{ comment.content }}</p>
+            <p>createtime: {{ comment.created_at }} updatetime: {{ comment.updated_at }}</p>
+          </b-col>
+          <b-col cols="2" style="background-color: white; position:absolute; right:0px; bottom:0px">
+            <button style="background-color: #EAEAEA; font-size: 0.8em;" class="btn" @click="deleteComment(comment)">DELETE</button>
+          </b-col>
+        </b-row>
         <hr>
       </li>
-   </ul>
+  </ul>
         
 
 </div>
@@ -123,5 +135,28 @@ export default {
 </script>
 
 <style>
+div {
+  background-color: white;
+}
+
+.textbox { 
+  position: relative; 
+  width: 85%; 
+  margin: auto;
+  margin-left:auto; 
+  margin-right:auto;
+  }
+.textbox input[type="text"] {
+  width: 85%; 
+  height: auto; 
+  line-height : normal; 
+  padding: .8em .5em; 
+  border: 1px solid #999;
+  border-radius: 0;  
+  outline-style: none;  
+  -webkit-appearance: none;  
+  -moz-appearance: none;
+  appearance: none;
+}
 
 </style>

@@ -1,32 +1,37 @@
 <template>
-  <div>
+<div>
+  <center>
+    <h1>Today Movie</h1>
+    <b-row class="container" style="width:100%">
+      <b-col cols="10">
+        <select id="feel" style= "width:500px; margin: 0px;" class="form-select " aria-label="Default select example">
+          <option value="">오늘 기분이 어때요?</option>
+            <option value="버럭">버럭</option>
+            <option value="까칠">까칠</option>
+            <option value="기쁨">기쁨</option>
+            <option value="소심">소심</option>
+            <option value="슬픔">슬픔</option>
+        </select>
+      </b-col>
+      <b-col cols="2" style="margin:0px; padding: 0px 110px 0px 0px;">
+        <button @click="modalShow = !modalShow" class="btn btn-success"><font-awesome-icon :icon="['fas','film']" size="lg" :style="{ color: 'white' }"/></button>
+      </b-col>
+    </b-row>
 
-    <h1> it's MovieRecommendation tab</h1>
+    <b-modal v-model="modalShow">
+      
+      <h2> {{movie.title}} </h2>
+      <!-- <h2> image 넣을 예정</h2> -->
+      <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
 
-    <select id="feel" style= "width:500px;" class="form-select " aria-label="Default select example">
-      <option value="">오늘 기분이 어때요?</option>
-        <option value="버럭">버럭</option>
-        <option value="까칠">까칠</option>
-        <option value="기쁨">기쁨</option>
-        <option value="소심">소심</option>
-        <option value="슬픔">슬픔</option>
-    </select>
-
-    <div>
-      <b-button @click="modalShow = !modalShow">오늘의 영화를 추천해 드려요</b-button>
-        <b-modal v-model="modalShow">
-          
-          <h2> {{movie.title}} </h2>
-          <!-- <h2> image 넣을 예정</h2> -->
-          <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
-
-        </b-modal>
-    </div>
+    </b-modal>
+    
 
     <!-- 변수 확인 버튼 -->
-    <button @click="onclick">get movie</button>
-    
-  </div>
+    <button @click="onclick" class="btn y" style="margin:20px; background-color: gray; color:white;">다른 영화 추천해주세요</button>
+  </center>  
+</div>
+  
 </template>
 
 
@@ -52,6 +57,7 @@ export default {
         url: 'https://api.themoviedb.org/3/movie/popular?api_key=6b1e9899f17fa92429f5a793999dcb8f',
       })
         .then((res) => {
+          alert('다시 영화를 추천받으세요')
           for (var i = 0; i < 20; i++) {
             // console.log(res.data.results[i].genre_ids)
             for (var j=0; j < res.data.results[i].genre_ids.length; j++) {

@@ -1,17 +1,16 @@
 <template>
   <div>
-    <h1>this is profile</h1>
-    <div class="mb-2">
-    
-    <b-avatar :src="gravatar" size="6rem"></b-avatar>
-  </div>
-    <ul>
-      <li>username : {{profileData.UserName}}</li>
-      <li>자기소개 : {{introduce}}</li>
-      <li>profileimage : {{profileImage}}</li>
-      <li>email : {{email}}</li>
-    </ul>
-
+    <center>
+      <h1>{{ nickname }}</h1>
+      <div class="mb-2">
+      <b-avatar :src="gravatar" size="6rem"></b-avatar>
+      </div>
+      <div>
+        <p sytle="font-weight:bold;">@{{profileData.UserName}}</p>
+        <p style="font-size:1.1em;">{{introduce}}</p>
+        <p>email : {{email}}</p>
+      </div>
+    </center>
     <!-- <button @click="getProfileData()">button</button> -->
   </div>
 </template>
@@ -43,6 +42,7 @@ export default {
       })
         .then((res) => {
           console.log(res.data)
+          this.nickname = res.data.nickname
           this.email = res.data.email
           this.profileImage = res.data.profileImage
           this.introduce = res.data.introduce
@@ -76,5 +76,10 @@ export default {
 </script>
 
 <style>
-
+html {
+  background-color: #F3EFE4;
+}
+div {
+  background-color: #F3EFE4;
+}
 </style>
