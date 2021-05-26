@@ -1,24 +1,24 @@
 <template>
-  <div>
-    <h1>this is reviewview</h1>
-    
+  <div style="background-color: #F3EFE4;">
+    <!-- <h1>REVIEW</h1> -->
     <CreateReview @complete="getReviews"/>
     <ul>
-      <li v-for="review in reviews" :key="`review_${review.id}`" style="background-color: #ffc0cb;">
-        <b-avatar :src="gravatar(review.email)" size="6rem"></b-avatar>
-        <p>title: {{ review.title }}</p>
-        <p>content: {{ review.content }}</p>
-        <p>username:@{{review.username}}</p>
-        <p>NickName: {{review.nickname}}</p>
-        <p>createtime: {{ review.created_at }}</p>
-        <p>updatetime: {{ review.updated_at }}</p>
-        <p>email: {{review.email}}</p>
-        <hr>
-          <CreateReviewComment :reviewId= review.id />
-        <div>
-          <button @click="deleteReviews(review)" style="background-color: #4CAF50;" class="btn">delete</button>
+      <li v-for="review in reviews" :key="`review_${review.id}`" style="background-color: #F3EFE4; list-style:none; padding:10px;">
+        <div class="card" style="margin:0px; padding: 20px;background-color: white;">
+          <b-avatar :src="gravatar(review.email)" size="6rem"></b-avatar>
+          <p>title: {{ review.title }}</p>
+          <p>content: {{ review.content }}</p>
+          <p>username:@{{review.username}}</p>
+          <p>NickName: {{review.nickname}}</p>
+          <p>createtime: {{ review.created_at }}</p>
+          <p>updatetime: {{ review.updated_at }}</p>
+          <p>email: {{review.email}}</p>
+          <hr>
+            <CreateReviewComment :reviewId= review.id />
+          <div>
+            <button @click="deleteReviews(review)" style="background-color: #4CAF50;" class="btn">delete</button>
+          </div>
         </div>
-        <hr>
       </li>
     </ul>
   </div>

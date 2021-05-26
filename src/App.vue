@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <div id="nav">
+  <div id="app" style="background-color: #F3EFE4">
+    <div id="nav" >
       <span v-if="isLogin">
         <router-link :to="{name: 'Home'}">Home</router-link> |
         <router-link :to="{name: 'Review'}">Review</router-link> |

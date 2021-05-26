@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div style="background-color: #F3EFE4">
     
     <h1> Movies </h1>
-    <div class= "row g-1 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+    <div class= "row g-1 row-cols-1 row-cols-sm-2 row-cols-lg-3" style=" margin:0px; padding:0px;">
         <MovieCard v-for="(movie,idx) in movies" :key="idx" :movie="movie" />
     </div>
 

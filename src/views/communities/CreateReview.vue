@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="card">
+    <div class="card" style="background-color: #F3EFE4">
       <h1>New Review</h1>
-      
+
       <div>
         <label for="title">title:</label>
         <input v-model="reviewData.title" id="title" type="text" />

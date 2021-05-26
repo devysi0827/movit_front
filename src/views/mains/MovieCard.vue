@@ -1,39 +1,38 @@
 <template>
 <div>
-
-<div class="card">
-  <div class="card-body">
-    <h3 class="card-title">{{ movie.title }}</h3>
-    <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
-  </div>  
-</div>
-  <div>
-    <b-button @click="modalShow = !modalShow">Open Modal</b-button>
-    <b-modal v-model="modalShow">
-      <h2> {{ movie.title}} </h2>
-      <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
-      <ModalContent/>
+  <div id="container" class="card">
+    <div class="card-body" style="margin:0px; padding:0px;">
+      <!-- <h3 class="card-title">{{ movie.title }}</h3> -->
+      <b-button style=" background-color: #300000" @click="modalShow = !modalShow">
+        <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+      </b-button>
+    </div>  
+  </div>
+  <div>  
+    <b-modal v-model="modalShow" size="xl" title="DETAIL">    
+      <h1 style="font-weight: bold"> {{ movie.title}} </h1>
+      <b-container class="bv-example-row">
+        <b-row>
+          <b-col>
+            <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+          </b-col>
+          <b-col><p style="font-size: 25px">{{ movie.overview }}</p></b-col>
+        </b-row>
+      </b-container>
     </b-modal>
   </div>
 </div>
 </template>
 
 <script>
-import ModalContent from "./ModalContentView";
-
 export default {
   name: 'MovieCard',
-  components: {
-    ModalContent,
-  },
   props: {
     movie: Object
   },
   data: function() {
     return{
-
       modalShow: false
-
     }
   },
 }
