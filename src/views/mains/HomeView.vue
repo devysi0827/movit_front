@@ -1,6 +1,6 @@
 <template>
-  <div style="background-color: #F3EFE4">
-    
+  <div style="background-color: #000000">
+    <!-- <Slider /> -->
     <h1> Movies </h1>
     <div class= "row g-1 row-cols-1 row-cols-sm-2 row-cols-lg-3" style=" margin:0px; padding:0px;">
         <MovieCard v-for="(movie,idx) in movies" :key="idx" :movie="movie" />
@@ -11,12 +11,14 @@
 
 <script>
 import MovieCard from './MovieCard.vue'
+// import Slider from './Slider.vue'
 import axios from 'axios'
 
 export default {
   name: 'Home',
   components: { 
     MovieCard,
+    // Slider,
     },
   data: function(){
     return { 

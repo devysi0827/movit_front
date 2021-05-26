@@ -1,15 +1,18 @@
 <template>
-<div>
-  <div id="container" class="card">
-    <div class="card-body" style="margin:0px; padding:0px;">
-      <!-- <h3 class="card-title">{{ movie.title }}</h3> -->
-      <b-button style=" background-color: #300000" @click="modalShow = !modalShow">
-        <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
-      </b-button>
-    </div>  
-  </div>
-  <div>  
-    <b-modal v-model="modalShow" size="xl" title="DETAIL">    
+
+<div class="box">
+<div class="card" >
+  <div class="card-body" style="margin:0px; padding:0px;">
+    <!-- <h3 class="card-title">{{ movie.title }}</h3> -->
+    <b-button style=" background-color: #300000" @click="modalShow = !modalShow">
+      <!-- Detail -->
+    <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+    </b-button>
+  </div>  
+</div>
+  <div>
+    
+    <b-modal v-model="modalShow" size="xl" title="DETAIL"> <!-- 이 안에 어떻게 {{ movie.title}} 넣어요?-->
       <h1 style="font-weight: bold"> {{ movie.title}} </h1>
       <b-container class="bv-example-row">
         <b-row>
@@ -25,19 +28,28 @@
 </template>
 
 <script>
+
 export default {
   name: 'MovieCard',
+  components: {
+
+  },
   props: {
     movie: Object
   },
   data: function() {
     return{
+
       modalShow: false
+
     }
   },
 }
 </script>
 
-<style>
-
+<style scoped>
+/* div[class="box"] {
+  position: relative;
+  top: 500px
+} */
 </style>

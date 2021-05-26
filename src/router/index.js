@@ -6,6 +6,7 @@ import Home from '@/views/mains/HomeView.vue'
 import review from '@/views/communities/ReviewView.vue'
 import MovieRecommendation from '@/views/recommendations/MovieRecommendationView.vue'
 import Profile from '@/views/profiles/ProfileView.vue'
+import Slider from '@/views/mains/Slider.vue'
 
 
 Vue.use(VueRouter)
@@ -41,6 +42,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/slider',
+    name: 'Slider',
+    component: Slider
   },
 
 ]
