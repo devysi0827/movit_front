@@ -1,19 +1,19 @@
 <template>
-  <div id="drag-container" style="background-color:black;">
-  <div id="spin-container" style="background-color:black;">
+  <div id="drag-container" style="background-color:black; visibility: hidden;">
+  <div id="spin-container" style="background-color:black; visibility: hidden;">
     <!-- Add your images (or video) here -->
-    <img src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"/>
-    <img src="https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"/>
-    <img src="https://image.tmdb.org/t/p/w500/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg"/>
-    <img src="https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg"/>
-    <img src="https://image.tmdb.org/t/p/w500/x1QZHSq9AzreIVbsp8VgYemAjV0.jpg"/>
-    <img src="https://image.tmdb.org/t/p/w500/jyJ0aWWJamLUzEyYq0XENwp8jX6.jpg"/>
-    <img src="https://image.tmdb.org/t/p/w500/74hLDKjD5aGYOotO6esUVaeISa2.jpg"/>
-    <img src="https://image.tmdb.org/t/p/w500/h5J4W4veyxMXDMjeNxZI46TsHOb.jpg"/>
-    <img src="https://image.tmdb.org/t/p/w500/wwrvjmcgkDyB2RbCbIVLXZf82pl.jpg"/>
+    <img style="visibility: visible;" src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"/>
+    <img style="visibility: visible;" src="https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"/>
+    <img style="visibility: visible;" src="https://image.tmdb.org/t/p/w500/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg"/>
+    <img style="visibility: visible;" src="https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg"/>
+    <img style="visibility: visible;" src="https://image.tmdb.org/t/p/w500/x1QZHSq9AzreIVbsp8VgYemAjV0.jpg"/>
+    <img style="visibility: visible;" src="https://image.tmdb.org/t/p/w500/jyJ0aWWJamLUzEyYq0XENwp8jX6.jpg"/>
+    <img style="visibility: visible;" src="https://image.tmdb.org/t/p/w500/74hLDKjD5aGYOotO6esUVaeISa2.jpg"/>
+    <img style="visibility: visible;" src="https://image.tmdb.org/t/p/w500/h5J4W4veyxMXDMjeNxZI46TsHOb.jpg"/>
+    <img style="visibility: visible;" src="https://image.tmdb.org/t/p/w500/wwrvjmcgkDyB2RbCbIVLXZf82pl.jpg"/>
     <!-- Example image with link -->
-    <a target="_blank" href="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg">
-      <img src="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+    <a style="visibility: visible;" target="_blank" href="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg">
+      <img style="visibility: visible;" src="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
     </a>
 
     <!-- Example add video  -->
@@ -162,20 +162,14 @@ document.onmousewheel = function(e) {
 
 
 <style module>
+html {
+  background-color: black;
+}
 #app {
   background-color: black;
-  display:none;
+
 }
-body {
-  background-color: #0006;
-}
-#drag-container {
-  background-color: #0007;
-  
-}
-#ground {
-  background-color: #9994;
-}
+
 </style>
 
 <style>
@@ -217,6 +211,7 @@ body {
           transform-style: preserve-3d;
   -webkit-transform: rotateX(-10deg);
           transform: rotateX(-10deg);
+  /* visibility: hidden; */
 }
 
 #drag-container img, #drag-container video {
@@ -244,6 +239,7 @@ body {
 #drag-container p {
   font-family: Serif;
   position: absolute;
+  
   top: 100%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%) rotateX(90deg);

@@ -155,5 +155,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+html {
+  background-color: #F3EFE4;
+}
 </style>

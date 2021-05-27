@@ -147,6 +147,9 @@ export default {
 </script>
 
 <style scoped>
+html {
+  background-color: #F3EFE4;
+}
 div {
   background-color: white;
 }

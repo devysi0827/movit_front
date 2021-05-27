@@ -4,7 +4,7 @@
   <div class="card" style=" background-color: black">
     <div class="card-body" style="margin:0px; padding:0px;">
       <!-- <h3 class="card-title">{{ movie.title }}</h3> -->
-      <b-button style=" background-color: black" @click="modalShow = !modalShow">
+      <b-button style=" background-color: black" @click="modalopen">
         <!-- Detail -->
         <img class="img-fluid"  v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
       </b-button>
@@ -33,7 +33,7 @@
               <span @click="onclicks(9)" class="starR">별9</span>
               <span @click="onclicks(10)" class="starR">별10</span>
             </div>
-            <button>평점주기</button>
+            <button @click="givescore">평점주기</button>
           </b-col>
 
         </b-row>
@@ -47,6 +47,8 @@
 global.jQuery = require('jquery');
 var $ = global.jQuery;
 window.$ = $;
+import axios from'axios'
+
 
 export default {
   name: 'MovieCard',
@@ -58,10 +60,42 @@ export default {
   },
   data: function() {
     return{
-      modalShow: false
+      modalShow: false,
+      movie_num: null,
+      moviescorebool: false,
+      movie_rank_num: null,
+      movieItem: {
+        movietitle: this.movie.title,
+      },
+      movie_num_rank_Item: {
+        movie_id: null,
+      },
+      movieRankItem: {
+        rank: 0,
+      },
     }
   },
   methods: {
+    modalopen() {
+      this.modalShow = !this.modalShow
+      this.movie_num_rank_Item.movie_id = this.movie_num
+      axios({
+      method: 'post',
+      url: `http://127.0.0.1:8000/movies/get_rank_info/`,
+      data: this.movie_num_rank_Item
+        })
+        .then((res)=>{
+          console.log(res)
+          this.movie_rank_num = res.data.rank_pk
+          let movie_score = res.data.rank
+          const score_stars = document.getElementsByClassName("starR")
+          console.log(score_stars)
+          for (var m = 0; m < movie_score; m++) {
+            const score_star = score_stars[m]
+            $(score_star).addClass("on")
+          }
+        })
+    },
     onclicks(num) {
       console.log(num)
       const stars = document.getElementsByClassName("starR")
@@ -74,10 +108,67 @@ export default {
         $(star).removeClass('on')
       }
       return false;
+    },
+    givescore () {
+      let score=document.getElementsByClassName("on").length
+      this.movieRankItem.rank = score
+      if (this.moviescorebool) {
+        axios({
+          method: 'put',
+          url: `http://127.0.0.1:8000/movies/${this.movie_num}/movie_rank/${this.movie_rank_num}/`,
+          data: this.movieRankItem,
+        })
+        .then((res)=>{
+          console.log('34567')
+          console.log(res)
+        })
+     .catch((err) => {
+          console.log(err)
+        })
+      }
     }
   },
+  mounted () {
+     axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/movies/get_movie_info/',
+          data: this.movieItem,
+        })
+    .then((res)=>{
+      this.movie_num =res.data.movie_pk
+    })
+    .then(()=>{
+        axios({
+          method: 'get',
+          url: `http://127.0.0.1:8000/movies/${this.movie_num}/movie_rank/`,
+          // data: this.movieRankItem,
+        })
+        .then((res)=>{
+          if (res.data.length) {
+            this.moviescorebool = true
+            // console.log(res)
+          }
+          else {
+            axios({
+          method: 'post',
+          url: `http://127.0.0.1:8000/movies/${this.movie_num}/movie_rank/`,
+          data: this.movieRankItem,
+            })
+          }
+        })
+    })
+    .catch((err) => {
+          console.log(err)
+        })
+    }
+
+    
+
+
+
+
+}
   
-  }
 
 </script>
 

@@ -69,6 +69,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: black;
   /* color: #2c3e50; */
 }
 

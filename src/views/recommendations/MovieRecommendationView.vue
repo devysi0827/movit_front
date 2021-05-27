@@ -167,7 +167,17 @@ export default {
 
 </script>
 
+<style >
+#app {
+  background-color: #F3EFE4;
+}
+</style>
+
 <style scoped>
+  html {
+  background-color: #F3EFE4;
+}
+
   select#feel option[value="버럭"]   { background-color: red;   }
 /* select#feel option[value="others"] { background-image:url(others.png); }  */
 </style>

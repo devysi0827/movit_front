@@ -133,4 +133,7 @@ $(document).ready(function() {
   -moz-appearance: none;
   appearance: none;
 }
+html {
+  background-color: #F3EFE4;
+}
 </style>
