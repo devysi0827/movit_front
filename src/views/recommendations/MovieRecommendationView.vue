@@ -18,11 +18,11 @@
         <b-col cols="10" style="margin:0px; padding:0px; width:100%;">
           <select id="feel" class="form-select " aria-label="Default select example">
             <option value="">선택해주세요</option>
-              <option value="버럭">버럭</option>
-              <option value="까칠">까칠</option>
-              <option value="기쁨">기쁨</option>
-              <option value="소심">소심</option>
-              <option value="슬픔">슬픔</option>
+              <option value="버럭">스트레스를 풀고 싶은 '버럭이'</option>
+              <option value="까칠">예민하고 까칠한 시간을 보낸 '까칠이'</option>
+              <option value="기쁨">하루종일 기분 좋은 '기쁨이'</option>
+              <option value="소심">짜임새 깊은 명작을 좋아하는 '소심이'</option>
+              <option value="슬픔">오늘은 눈물을 흘리고 싶은 '슬픔이'</option>
           </select>
         </b-col>
         <b-col cols="2" style="margin:0px; padding:0px; width:100%; background-color:#E7ADF9;">
@@ -62,7 +62,7 @@
               <span @click="onclicks(9)" class="starR">별9</span>
               <span @click="onclicks(10)" class="starR">별10</span>
             </div>
-            <button @click="givescore">평점주기</button>
+            <!-- <button @click="givescore">평점주기</button> -->
           </b-col>
 
         </b-row>
@@ -110,45 +110,48 @@ export default {
           }
           } else if (this.feel === '까칠'){
           if (this.weather === 'bad') {
-            this.recommend_genres = []
+            this.recommend_genres = [18,10402]
           } else {
             if (this.night) {
-              this.recommend_genres = []
+              this.recommend_genres = [35,18,10749]
             } else{
-              this.recommend_genres = []
+              this.recommend_genres = [16,12]
             }
           }
           } else if (this.feel === '기쁨'){
           if (this.weather === 'bad') {
-            this.recommend_genres = []
+            this.recommend_genres = [28,12,16]
           } else {
             if (this.night) {
-              this.recommend_genres = []
+              this.recommend_genres = [10751,99]
             } else{
-              this.recommend_genres = []
+              this.recommend_genres = [10402,35]
             }
           }
           } else if (this.feel === '소심'){
           if (this.weather === 'bad') {
-            this.recommend_genres = []
+            this.recommend_genres = [53,10752]
           } else {
             if (this.night) {
-              this.recommend_genres = []
+              this.recommend_genres = [878,9648]
             } else{
-              this.recommend_genres = []
+              this.recommend_genres = [80,36]
             }
           }
           } else if (this.feel === '슬픔'){
           if (this.weather === 'bad') {
-            this.recommend_genres = []
+            this.recommend_genres = [99]
           } else {
             if (this.night) {
-              this.recommend_genres = []
+              this.recommend_genres = [16]
             } else{
-              this.recommend_genres = []
+              this.recommend_genres = [18]
             }
-          }
           } 
+          } else {
+            alert('기분을 선택해주세요')
+            return 0
+          }
 
       // 페이지 난수 설정
       this.recommend_genre = _.sample(this.recommend_genres)
@@ -226,7 +229,7 @@ export default {
     background-image:url("../../../image/배경2.jpeg");
     background-size: cover
   }
-  select#feel option[value="버럭"]   { background-color: red;   }
+  /* select#feel option[value="버럭"]   { background-color: red;   } */
 /* select#feel option[value="others"] { background-image:url(others.png); }  */
   .starR{
     background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;

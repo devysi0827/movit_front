@@ -18,6 +18,9 @@
         <b-row>
           <b-col>
             <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+            <p style="font-size: 25px; text-align:center; padding:0px 5px 0px 0px" >
+              영화 점수:{{movie_vote_average}}
+            </p>
           </b-col>
           <b-col>
             <p style="font-size: 25px">{{ movie.overview }}</p>
@@ -64,6 +67,7 @@ export default {
       movie_num: null,
       moviescorebool: false,
       movie_rank_num: null,
+      movie_vote_average: null,
       movieItem: {
         movietitle: this.movie.title,
       },
@@ -136,6 +140,7 @@ export default {
     })
     .then((res)=>{
       this.movie_num =res.data.movie_pk
+      this.movie_vote_average = res.data.vote_average
     })
     .then(()=>{
         axios({

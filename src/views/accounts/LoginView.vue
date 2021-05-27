@@ -39,7 +39,7 @@ export default {
           console.log(res)
           localStorage.setItem('jwt', res.data.token)
           this.$emit('login')
-          this.$router.push({ name: 'Home' })
+          this.$router.push({ name: 'Maindoor' })
         })
         .catch(err => {
           console.log(err)
