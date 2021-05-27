@@ -51,7 +51,10 @@ export default {
       comments: null,
       commentData: {
         content: '',
-      }
+      },
+      profileData: {
+        UserName: jwt_decode(localStorage.jwt).username,
+      },
     }
   },
   props: {
@@ -101,6 +104,7 @@ export default {
           url: `http://127.0.0.1:8000/community/${this.reviewId}/comments/`,
           data: commentItem,
           headers: this.setToken()
+          
         })
           .then((res) => {
             console.log(res)
@@ -117,11 +121,19 @@ export default {
       axios({
         method: 'delete',
         url: `http://127.0.0.1:8000/community/${this.reviewId}/comments/${comment.id}/`,
-        headers: this.setToken()
+        headers: this.setToken(),
+        data: this.profileData
+        
       })
         .then((res) => {
           console.log(res)
-          this.getComments()
+          if (res.data.message === "코멘트삭제실패"){
+            alert('본인글만 삭제 가능합니다')
+          }
+          else{
+            this.getComments()
+          }
+          
         })
         .catch((err) => {
           console.log(err)

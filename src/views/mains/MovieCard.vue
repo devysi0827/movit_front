@@ -19,7 +19,23 @@
           <b-col>
             <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
           </b-col>
-          <b-col><p style="font-size: 25px">{{ movie.overview }}</p></b-col>
+          <b-col>
+            <p style="font-size: 25px">{{ movie.overview }}</p>
+            <div class="starRev">
+              <span @click="onclicks(1)" class="starR ">별1</span>
+              <span @click="onclicks(2)" class="starR">별2</span>
+              <span @click="onclicks(3)" class="starR">별3</span>
+              <span @click="onclicks(4)" class="starR">별4</span>
+              <span @click="onclicks(5)" class="starR">별5</span>
+              <span @click="onclicks(6)" class="starR">별6</span>
+              <span @click="onclicks(7)" class="starR">별7</span>
+              <span @click="onclicks(8)" class="starR">별8</span>
+              <span @click="onclicks(9)" class="starR">별9</span>
+              <span @click="onclicks(10)" class="starR">별10</span>
+            </div>
+            <button>평점주기</button>
+          </b-col>
+
         </b-row>
       </b-container>
     </b-modal>
@@ -28,6 +44,9 @@
 </template>
 
 <script>
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;
 
 export default {
   name: 'MovieCard',
@@ -39,16 +58,41 @@ export default {
   },
   data: function() {
     return{
-
       modalShow: false
-
     }
   },
-}
+  methods: {
+    onclicks(num) {
+      console.log(num)
+      const stars = document.getElementsByClassName("starR")
+      for (var i = 0; i < num; i++) {
+        const star = stars[i]
+        $(star).addClass('on')
+      }
+      for (var j = num+1; j < 10; j++) {
+        const star = stars[j]
+        $(star).removeClass('on')
+      }
+      return false;
+    }
+  },
+  
+  }
+
 </script>
 
 <style scoped>
 html {
   background-color: black;
 }
+.starR{
+  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+  background-size: auto 100%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.starR.on{background-position:0 0;}
 </style>

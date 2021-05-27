@@ -6,7 +6,7 @@
         <router-link :to="{name: 'Review'}">Review</router-link> |
         <router-link :to="{name: 'MovieRecommendation'}">MovieRecommendation</router-link> |
         <router-link :to="{name: 'Profile'}">Profile</router-link> |
-        <router-link :to="{name: 'Slider'}">Slider</router-link> |
+        <router-link :to="{name: 'Maindoor'}">Maindoor</router-link> |
         <router-link @click.native="logout" to="#">Logout</router-link>
       </span>
       <span v-else>
@@ -20,7 +20,7 @@
         <router-link :to="{name: 'Review'}">Review</router-link> |
         <router-link :to="{name: 'MovieRecommendation'}">MovieRecommendation</router-link> |
         <router-link :to="{name: 'Profile'}">Profile</router-link> |
-        <router-link :to="{name: 'Slider'}">Slider</router-link> |
+        <router-link :to="{name: 'Maindoor'}">Maindoor</router-link> |
         <router-link @click.native="logout" to="#">Logout</router-link>
       </span>
       <span v-else>

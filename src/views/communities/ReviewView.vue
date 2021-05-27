@@ -18,6 +18,8 @@
             </b-col>
             <b-col cols="2" style="background-color: white; position:absolute; right:0px; bottom:0px">
               <button @click="deleteReviews(review)" style="background-color: #EAEAEA; font-size: 0.9em;" class="btn">DELETE</button>
+              <button @click="PutReviews(review)" style="background-color: #EAEAEA; font-size: 0.9em;" class="btn">수정</button>
+
             </b-col>
           </b-row>
           
@@ -88,15 +90,42 @@ export default {
         })
     },
 
+    PutReviews: function (review) {
+      axios({
+        method: 'put',
+        url: `http://127.0.0.1:8000/community/${review.id}/`,
+        headers: this.setToken(),
+        data: this.profileData
+      })
+        .then((res) => {
+          console.log(res)
+          // if (res.data.message === "리뷰수정실패"){
+          //   alert('본인글만 수정 가능합니다')
+          // }
+          // else{
+          this.getReviews()
+          // }
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+
     deleteReviews: function (review) {
       axios({
         method: 'delete',
         url: `http://127.0.0.1:8000/community/${review.id}/`,
-        headers: this.setToken()
+        headers: this.setToken(),
+        data: this.profileData
       })
         .then((res) => {
           console.log(res)
-          this.getReviews()
+          if (res.data.message === "리뷰삭제실패"){
+            alert('본인글만 삭제 가능합니다')
+          }
+          else{
+            this.getReviews()
+          }
         })
         .catch((err) => {
           console.log(err)
@@ -117,6 +146,7 @@ export default {
       this.getReviews()
       var token = localStorage.jwt
       this.UserName = jwt_decode(token).username
+      this.profileData.UserName = jwt_decode(token).username
     } else {
       this.$router.push({name: 'Login'})
     }

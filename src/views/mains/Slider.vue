@@ -1,162 +1,168 @@
+
 <template>
+
 <div>
-  <nav id="nav">
-      <button id="prev" data-increment="-1">Previous</button>
-      <button id="next" data-increment="1">Next</button>
-</nav>
+ <section id="slideshow">
+			<div class="entire-content">
+				<div class="content-carrousel">
+					<figure class="shadow"><img src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"/></figure>
+					<figure class="shadow"><img src="https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"/></figure>
+					<figure class="shadow"><img src="https://image.tmdb.org/t/p/w500/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg"/></figure>
+					<figure class="shadow"><img src="https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg"/></figure>
+					<figure class="shadow"><img src="https://image.tmdb.org/t/p/w500/x1QZHSq9AzreIVbsp8VgYemAjV0.jpg"/></figure>
+					<figure class="shadow"><img src="https://image.tmdb.org/t/p/w500/jyJ0aWWJamLUzEyYq0XENwp8jX6.jpg"/></figure>
+					<figure class="shadow"><img src="https://image.tmdb.org/t/p/w500/74hLDKjD5aGYOotO6esUVaeISa2.jpg"/></figure>
+					<figure class="shadow"><img src="https://image.tmdb.org/t/p/w500/h5J4W4veyxMXDMjeNxZI46TsHOb.jpg"/></figure>
+					<figure class="shadow"><img src="https://image.tmdb.org/t/p/w500/wwrvjmcgkDyB2RbCbIVLXZf82pl.jpg"/></figure>
 
-<div class="demoWrapper">
-  <div class="stage">
-    <div class="box">
-      <img src="http://via.placeholder.com/285x285" width="285" height="285">
-    </div>
-    <div class="box">
-      <img src="http://via.placeholder.com/285x285" width="285" height="285">
-    </div>
-    <div class="box">
-    </div>
-    <div class="box">
-    </div>
-    <div class="box">
-    </div>
-    <div class="box">
-    </div>
-    <div class="box">
-    </div>
-    <div class="box">
-    </div>
-    <div class="box">
-    </div>
-    <div class="box">
-    </div>
-    <div class="box">
-    </div>
-    <div class="box"> <b-button style=" background-color: #300000" @click="modalShow = !modalShow">
-      <img src="https://image.tmdb.org/t/p/w500//xCEg6KowNISWvMh8GvPSxtdf9TO.jpg" width="285" height="285">
-    <!-- <img class="img-fluid" v-bind:src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"> -->
-    </b-button>
-     <div>
-    
-    <b-modal v-model="modalShow" size="xl" title="DETAIL"> <!-- 이 안에 어떻게 {{ movie.title}} 넣어요?-->
-      <b-container class="bv-example-row">
-        <b-row>
-          <b-col>
-            <img class="img-fluid" src="https://image.tmdb.org/t/p/w500//xCEg6KowNISWvMh8GvPSxtdf9TO.jpg">
-          </b-col>
-        </b-row>
-      </b-container>
-    </b-modal>
-  </div>
-    </div>
-    <div class="box">
-    </div>
-  </div>
-</div>
-
-<div class="stage">
-
-
-</div>
+		</div>
+	</div>
+</section>
 </div>
 </template>
 
 <script>
-// import gsap from 'gsap'
-import TweenMax from 'gsap'
-import TweenLite from 'gsap'
-import Linear from 'gsap'
-global.jQuery = require('jquery');
-var $ = global.jQuery;
-window.$ = $;
-
 export default {
   name: 'Slider',
   data: function() {
     return{
-
       modalShow: false
-
     }
   },
-  mounted() {
-    $(window).on("load",function(){
 
-var boxes = $(".box"),
-    stage = $(".stage");
-
-TweenLite.set(stage, {
-  css: {
-    perspective: 1100,
-    transformStyle: "preserve-3d"
-  }
-});
-
-boxes.each(function(index, element) {
-  TweenLite.set(element, {
-    css: {
-      rotationY: index * 360 / 13,
-      transformOrigin: "50% 50% -420"
-    }
-  });
-  TweenMax.to(element, 20, {
-    css: {
-      z:0.01,
-      rotationY: "+=359"
-    },
-    repeat: -1, // 20
-    ease: Linear.easeNone
-  });
-});
-  
-});
-    
-  },
 }
 </script>
 
 <style scoped>
-html{
-  background-image: linear-gradient(207deg, #B4EC51 0px, #419A4A 100%);
-  height: 100%;
+/* 3D Slideshow */ 
+* {
+	margin: 0;
+	padding: 0;
 }
 
-body {
-    height:100%;
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background-color: #000;
 }
 
-.demoWrapper {
-  width: 680px;
-  height: 400px;
-  -webkit-font-smoothing: antialiased;
-  margin: 50px auto;
-  padding: 1px;
+#slideshow {
+	margin: 100 auto;
+	padding-top: 50px;
+	height: 400px;
+	width: 100%;
+	background-color: #000;
+	box-sizing: border-box;
 }
 
-.stage {
-  height: 325px;
-  margin-top: auto;
-  margin-left: auto;
-  color: #ddd;
-  margin-right: 10px;
-  font-family: Arial, Helvetica, Verdana;
-  position:realtive;
+.slideshow-title {
+	font-family: 'Allerta Stencil';
+	font-size: 62px;
+	color: #fff;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 25%;
+	letter-spacing: 3px;
+	font-weight: 300;
 }
 
-.box {
-  position: absolute;
-  width: 180px;
-  height: 250px;
-  background-color: #06f;
-  display: inline-block;
-  margin: 10px 20px 20px 235px; 
-  display: inline-block;
-  overflow:hidden;
+.sub-heading {
+	padding-top: 50px;
+	font-size: 18px;
+} .sub-heading-two {
+	font-size: 15px;
+} .sub-heading-three {
+	font-size: 13px;
+} .sub-heading-four {
+	font-size: 11px;
+} .sub-heading-five {
+	font-size: 9px;
+} .sub-heading-six {
+	font-size: 7px;
+} .sub-heading-seven {
+	font-size: 5px;
+} .sub-heading-eight {
+	font-size: 3px;
+} .sub-heading-nine {
+	font-size: 1px;
 }
 
-.box > img {
-  width:180px;
-  height:auto;
-  border:1px solid #DDD;
-  outline:0 solid transparent;
+.entire-content {
+	margin: auto;
+	width: 190px;
+	perspective: 1000px;
+	position: relative;
+	padding-top: 80px;
+  background-color: #000;
+}
+
+.content-carrousel {
+	width: 100%;
+	position: absolute;
+	float: right;
+	animation: rotar 15s infinite linear;
+	transform-style: preserve-3d;
+}
+
+.content-carrousel:hover {
+	animation-play-state: paused;
+	cursor: pointer;
+}
+
+.content-carrousel figure {
+	width: 100%;
+	height: 120px;
+	border: 1px solid #3b444b;
+	overflow: hidden;
+	position: absolute;
+}
+
+.content-carrousel figure:nth-child(1) {
+	transform: rotateY(0deg) translateZ(300px); 
+} .content-carrousel figure:nth-child(2) {
+	transform: rotateY(40deg) translateZ(300px); 
+} .content-carrousel figure:nth-child(3) {
+	transform: rotateY(80deg) translateZ(300px); 
+} .content-carrousel figure:nth-child(4) {
+	transform: rotateY(120deg) translateZ(300px); 
+} .content-carrousel figure:nth-child(5) {
+	transform: rotateY(160deg) translateZ(300px); 
+} .content-carrousel figure:nth-child(6) {
+	transform: rotateY(200deg) translateZ(300px); 
+} .content-carrousel figure:nth-child(7) {
+	transform: rotateY(240deg) translateZ(300px); 
+} .content-carrousel figure:nth-child(8) {
+	transform: rotateY(280deg) translateZ(300px); 
+} .content-carrousel figure:nth-child(9) {
+	transform: rotateY(320deg) translateZ(300px); 
+} .content-carrousel figure:nth-child(10) {
+	transform: rotateY(360deg) translateZ(300px); 
+} 
+
+.shadow {
+    position: absolute;
+    box-shadow: 0px 0px 50px 0px #000;
+    border-radius: 1px;
+}
+
+.content-carrousel img {
+	image-rendering: auto;
+	transition: all 300ms;
+	width: 100%;
+	height: 100%;
+}
+
+.content-carrousel img:hover {
+	transform: scale(1.2);
+	transition: all 300ms;
+}
+
+@keyframes rotar {
+	from {
+		transform: rotateY(0deg);
+	} to {
+		transform: rotateY(360deg);
+	}
 }
 </style>
