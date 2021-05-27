@@ -53,11 +53,11 @@
 
 <script>
 import md5 from "md5";
-import jwt_decode from "jwt-decode"
+// import jwt_decode from "jwt-decode"
 import axios from'axios'
 
 export default {
-  name: "Profile",
+  name: "anotherProfile",
   data () {
     return{
       profileData: {
@@ -148,8 +148,8 @@ export default {
 
   created: function () {
     if (localStorage.getItem('jwt')) {
-      var token = localStorage.jwt
-      this.profileData.UserName = jwt_decode(token).username
+      var token = sessionStorage.profilename
+      this.profileData.UserName = token
       this.getProfileData()
     } else {
       this.$router.push({name: 'Login'})

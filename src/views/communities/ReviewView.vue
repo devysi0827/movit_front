@@ -11,7 +11,7 @@
             </b-col >
             <b-col cols="8" style="text-align: left; padding:5px; background-color: white;">
               <!-- <a href="">{{review.nickname}} @{{review.username}}</a> -->
-              <p><span style="font-weight:bold; font-size: 1.1m;">{{review.nickname}}</span> @{{review.username}} ㆍ<span style="font-weight:bold; font-size: 0.9m;">{{ review.created_at | moment("from", "now") }}</span>ㆍ수정: <span>{{ review.updated_at | moment("from", "now") }}</span> </p>
+              <p><span  @click="moveToProfile(review.username)" style="font-weight:bold; cursor: pointer; font-size: 1.1m;">{{review.nickname}}</span> @{{review.username}} ㆍ<span style="font-weight:bold; font-size: 0.9m;">{{ review.created_at | moment("from", "now") }}</span>ㆍ수정: <span>{{ review.updated_at | moment("from", "now") }}</span> </p>
               <p style="font-weight:bold; font-size: 1.2em;">{{ review.title }}</p>
               <p style="font-size: 1em;">{{ review.content }}</p>              
             </b-col>
@@ -66,6 +66,11 @@ data: function () {
   },
 
   methods: {
+    moveToProfile: function(selectusername){
+      console.log(selectusername)
+      sessionStorage.setItem('profilename', selectusername)
+      this.$router.push({ name: 'anotherProfile' })
+    },
     setToken: function () {
       const token = localStorage.getItem('jwt')
       const config = {

@@ -7,6 +7,7 @@ import review from '@/views/communities/ReviewView.vue'
 import MovieRecommendation from '@/views/recommendations/MovieRecommendationView.vue'
 import Profile from '@/views/profiles/ProfileView.vue'
 import Maindoor from '@/views/mains/Maindoor.vue'
+import anotherProfile from '@/views/profiles/anotherProfileView.vue'
 
 
 
@@ -43,6 +44,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/anotherprofile',
+    name: 'anotherProfile',
+    component: anotherProfile
   },
   {
     path: '/maindoor',

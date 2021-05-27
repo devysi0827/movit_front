@@ -28,7 +28,7 @@
           <p><span style="font-weight:bold; font-size: 1.1m;">{{comment.nickname}}</span> @{{comment.username}}</p>
           <!-- <p>comment: {{comment.id}}</p> -->
           <p style="font-size: 1em;">{{ comment.content }}</p>
-          <p>createtime: {{ comment.created_at }} updatetime: {{ comment.updated_at }}</p>
+          <p>createtime: {{ comment.created_at | moment("from", "now") }} updatetime: {{ comment.updated_at | moment("from", "now") }}</p>
         </b-col>
         <b-col cols="2" style="background-color: white; position:absolute; right:0px; bottom:0px">
           <button style="background-color: #EAEAEA; font-size: 0.8em;" class="btn" @click="deleteComment(comment)">DELETE</button>
