@@ -1,6 +1,6 @@
 <template>
-  <div id="drag-container">
-  <div id="spin-container">
+  <div id="drag-container" style="background-color:black;">
+  <div id="spin-container" style="background-color:black;">
     <!-- Add your images (or video) here -->
     <img src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"/>
     <img src="https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"/>
@@ -24,7 +24,7 @@
     <!-- Text at center of ground -->
     <p>3D Tiktok Carousel</p>
   </div>
-  <div id="ground"></div>
+  <div id="ground" style="backgorund-color:black;"></div>
 </div>
 
 <!-- github corner (https://github.com/tholman/github-corners) -->
@@ -43,8 +43,8 @@ export default {
 var radius = 500; // how big of the radius
 var autoRotate = true; // auto rotate or not
 var rotateSpeed = -60; // unit: seconds/360 degrees
-var imgWidth = 120; // width of images (unit: px)
-var imgHeight = 170; // height of images (unit: px)
+var imgWidth = 180; // width of images (unit: px)
+var imgHeight = 254; // height of images (unit: px)
 
 
 
@@ -160,15 +160,33 @@ document.onmousewheel = function(e) {
 }
 </script>
 
+
+<style module>
+#app {
+  background-color: black;
+  display:none;
+}
+body {
+  background-color: #0006;
+}
+#drag-container {
+  background-color: #0007;
+  
+}
+#ground {
+  background-color: #9994;
+}
+</style>
+
 <style>
   * {
   margin: 0;
   padding: 0;
+
 }
 
-html,
-body {
-  background-color: #000000;
+html, body {
+  /* background-color: black; */
   height: 100%;
   touch-action: none; 
 }
@@ -179,7 +197,6 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   /* display: flex; */
-  background-color: #000;
   -webkit-perspective: 1000px;
           perspective: 1000px;
   -webkit-transform-style: preserve-3d;
@@ -187,13 +204,13 @@ body {
 }
 
 #drag-container, #spin-container {
-  position: absolute; 
+  position: relative; 
   /* 포지션 */
-  /* background-color: #fff; */
-  left: 500px;
-  top: 200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  background-color: #fff;
+  left: 0%;
+  top: 130px;
+  /* display: -webkit-box;
+  display: -ms-flexbox; */
   display: flex;
   margin: auto;
   -webkit-transform-style: preserve-3d;
@@ -215,13 +232,13 @@ body {
   text-align: center;
   -webkit-box-shadow: 0 0 8px #fff;
           box-shadow: 0 0 8px #fff;
-  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
+  -webkit-box-reflect: below 10px linear-gradient(transparent, #0005);
 }
 
 #drag-container img:hover, #drag-container video:hover {
   -webkit-box-shadow: 0 0 15px #fffd;
           box-shadow: 0 0 15px #fffd;
-  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
+  -webkit-box-reflect: below 10px linear-gradient(transparent, #0007);
 }
 
 #drag-container p {
@@ -235,6 +252,7 @@ body {
 }
 
 #ground {
+
   width: 900px;
   height: 900px;
   position: absolute;
@@ -242,7 +260,7 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%,-50%) rotateX(90deg);
           transform: translate(-50%,-50%) rotateX(90deg);
-  background: -webkit-radial-gradient(center center, farthest-side , #9993, transparent);
+  background: -webkit-radial-gradient(center center,  #9993, transparent);
 }
 
 @-webkit-keyframes spin {
