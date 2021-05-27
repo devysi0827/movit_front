@@ -60,7 +60,9 @@ export default {
 }
 </script>
 
-<style>
+
+<style >
+
 html {
   background-color: #F3EFE4;
 }
@@ -70,7 +72,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: black;
-  /* color: #2c3e50; */
+
 }
 
 #nav {
@@ -86,3 +88,4 @@ html {
   color: #42b983;
 }
 </style>
+

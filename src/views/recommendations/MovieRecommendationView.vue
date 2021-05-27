@@ -30,6 +30,7 @@
     <!-- 변수 확인 버튼
     <button @click="onclick" class="btn y" style="margin:20px; background-color: gray; color:white;">다른 영화 추천해주세요</button> -->
   </center>  
+
 </div>
   
 </template>
@@ -38,6 +39,7 @@
 <script>
 import axios from'axios'
 import _ from 'lodash'
+
 
 export default {
   name: "MovieRecommendation",
@@ -168,16 +170,15 @@ export default {
 </script>
 
 <style >
-#app {
-  background-color: #F3EFE4;
-}
 </style>
 
 <style scoped>
-  html {
+html {
+  min-height: 300%;
   background-color: #F3EFE4;
+  color: #F3EFE4;
 }
 
-  select#feel option[value="버럭"]   { background-color: red;   }
+  select#feel option[value="버럭"]   { background-color: red;  }
 /* select#feel option[value="others"] { background-image:url(others.png); }  */
 </style>
