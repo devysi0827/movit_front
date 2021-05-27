@@ -122,18 +122,18 @@ export default {
           console.log('34567')
           console.log(res)
         })
-     .catch((err) => {
+        .catch((err) => {
           console.log(err)
         })
       }
     }
   },
   mounted () {
-     axios({
+    axios({
           method: 'post',
           url: 'http://127.0.0.1:8000/movies/get_movie_info/',
           data: this.movieItem,
-        })
+    })
     .then((res)=>{
       this.movie_num =res.data.movie_pk
     })

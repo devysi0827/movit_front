@@ -17,9 +17,12 @@
               <p style="font-size: 0.9em;">createtime: {{ review.created_at }} updatetime: {{ review.updated_at }}</p>
             </b-col>
             <b-col cols="2" style="background-color: white; position:absolute; right:0px; bottom:0px">
-              <button @click="deleteReviews(review)" style="background-color: #EAEAEA; font-size: 0.9em;" class="btn">DELETE</button>
-              <button @click="PutReviews(review)" style="background-color: #EAEAEA; font-size: 0.9em;" class="btn">수정</button>
-
+              <div>
+                <button @click="deleteReviews(review)" style="background-color: #EAEAEA; font-size: 0.9em; width:50%" class="btn">DELETE</button>
+              </div>
+              <div>
+                <button @click="PutReviews(review)" style="background-color: #EAEAEA; font-size: 0.9em; width:50%" class="btn">EDIT</button>
+              </div>
             </b-col>
           </b-row>
           

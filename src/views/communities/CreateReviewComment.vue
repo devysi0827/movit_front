@@ -4,36 +4,38 @@
 <div style="background-color: white;">
   <!-- <h1>comment tab it will be delete</h1> -->
   <!-- <h1>{{reviewId}}</h1> -->
-  <b-row style="background-color: white;">
-    <b-col class="textbox" cols="10" style="background-color: white; padding: 0px 0px 0px 10%;">
-      <input v-model="commentData.content" type="text" style="width:100%;">
-    </b-col >
-    <b-col cols="2" style="background-color: white;">
-      <button @click="createComment" class="btn btn-success"> 댓글달기</button>
-    </b-col >
-  </b-row>
+  <b-container>
+    <b-row style="background-color: white;">
+      <b-col class="textbox" cols="9" style="background-color: white; margin: 0px 0px 0px 5%;">
+        <input v-model="commentData.content" type="text" style="width:100%;">
+      </b-col >
+      <b-col style="background-color: white;">
+        <button @click="createComment" class="btn btn-success"> 댓글달기</button>
+      </b-col>
+    </b-row>
+  </b-container>
   <div style="background-color: white;">
     <button @click="seeComment" class="btn"><font-awesome-icon :icon="['far','comment']" size="lg" :style="{ color: 'green' }"/></button>
     <button @click="closeComment" class="btn"><font-awesome-icon :icon="['fas','comment-slash']" size="lg" :style="{ color: 'green' }"/></button>
   </div>
   <ul>
-      <li v-for="comment in comments" :key="`${comment.id}`" style="background-color: white; list-style:none; padding:3px; margin:3px;">
-        <b-row style="background-color: white; position:relative;">
-          <b-col cols="2" style="background-color: white;">
-            <b-avatar :src="gravatar(comment.email)" size="6rem"></b-avatar>
-          </b-col>
-          <b-col cols="8" style="background-color: white; text-align: left; padding:5px;">
-             <p><span style="font-weight:bold; font-size: 1.1m;">{{comment.nickname}}</span> @{{comment.username}}</p>
-            <!-- <p>comment: {{comment.id}}</p> -->
-            <p style="font-size: 1em;">{{ comment.content }}</p>
-            <p>createtime: {{ comment.created_at }} updatetime: {{ comment.updated_at }}</p>
-          </b-col>
-          <b-col cols="2" style="background-color: white; position:absolute; right:0px; bottom:0px">
-            <button style="background-color: #EAEAEA; font-size: 0.8em;" class="btn" @click="deleteComment(comment)">DELETE</button>
-          </b-col>
-        </b-row>
-        <hr>
-      </li>
+    <li v-for="comment in comments" :key="`${comment.id}`" style="background-color: white; list-style:none; padding:3px; margin:3px;">
+      <b-row style="background-color: white; position:relative;">
+        <b-col cols="2" style="background-color: white;">
+          <b-avatar :src="gravatar(comment.email)" size="6rem"></b-avatar>
+        </b-col>
+        <b-col cols="8" style="background-color: white; text-align: left; padding:5px;">
+          <p><span style="font-weight:bold; font-size: 1.1m;">{{comment.nickname}}</span> @{{comment.username}}</p>
+          <!-- <p>comment: {{comment.id}}</p> -->
+          <p style="font-size: 1em;">{{ comment.content }}</p>
+          <p>createtime: {{ comment.created_at }} updatetime: {{ comment.updated_at }}</p>
+        </b-col>
+        <b-col cols="2" style="background-color: white; position:absolute; right:0px; bottom:0px">
+          <button style="background-color: #EAEAEA; font-size: 0.8em;" class="btn" @click="deleteComment(comment)">DELETE</button>
+        </b-col>
+      </b-row>
+      <hr>
+    </li>
   </ul>
         
 
