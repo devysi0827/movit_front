@@ -11,18 +11,18 @@
             </b-col >
             <b-col cols="8" style="text-align: left; padding:5px; background-color: white;">
               <!-- <a href="">{{review.nickname}} @{{review.username}}</a> -->
-              <p><span style="font-weight:bold; font-size: 1.1m;">{{review.nickname}}</span> @{{review.username}}</p>
+              <p><span style="font-weight:bold; font-size: 1.1m;">{{review.nickname}}</span> @{{review.username}} ㆍ<span style="font-weight:bold; font-size: 0.9m;">{{ review.created_at | moment("from", "now") }}</span>ㆍ수정: <span>{{ review.updated_at | moment("from", "now") }}</span> </p>
               <p style="font-weight:bold; font-size: 1.2em;">{{ review.title }}</p>
-              <p style="font-size: 1em;">{{ review.content }}</p>
-              <p style="font-size: 0.9em;">createtime: {{ review.created_at }} updatetime: {{ review.updated_at }}</p>
+              <p style="font-size: 1em;">{{ review.content }}</p>              
             </b-col>
             <b-col cols="2" style="background-color: white; position:absolute; right:0px; bottom:0px">
               <div>
-                <button @click="deleteReviews(review)" style="background-color: #EAEAEA; font-size: 0.9em; width:50%" class="btn">DELETE</button>
-              </div>
-              <div>
                 <button @click="PutReviews(review)" style="background-color: #EAEAEA; font-size: 0.9em; width:50%" class="btn">EDIT</button>
               </div>
+              <div>
+                <button @click="deleteReviews(review)" style="background-color: #EAEAEA; font-size: 0.9em; width:50%" class="btn">DELETE</button>
+              </div>
+ 
             </b-col>
           </b-row>
           
@@ -50,9 +50,9 @@ export default {
     CreateReviewComment
   },
 
- data: function () {
+data: function () {
     return {
-       profileData: {
+      profileData: {
         UserName: '',
       },
       color_black: false,

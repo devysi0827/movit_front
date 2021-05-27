@@ -14,6 +14,9 @@ import { faComment as farComment} from '@fortawesome/free-regular-svg-icons'
 import { faCommentSlash as fasCommentSlash} from '@fortawesome/free-solid-svg-icons'
 import { faFilm as fasFilm} from '@fortawesome/free-solid-svg-icons'
 
+import vueMoment from 'vue-moment' 
+Vue.use(vueMoment)
+
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 

@@ -5,8 +5,8 @@
     
     <h1 style="font-family: 'Euphoria Script', cursive; font-size: 6em;">Today Movie</h1>
     <!-- <img width="500" height="500" src="../../../image/1.png" alt=""> -->
-    <h3 style="font-family: 'Nanum Brush Script', cursive; font-size: 2em; padding: 240px 0px 0px 0px; ">오늘 기분이 어때요?</h3>
-    <section style="top:-420px;">
+    <h3 style="font-family: 'Nanum Brush Script', cursive; font-size: 2em; padding: 250px 0px 0px 0px; ">오늘 기분이 어때요?</h3>
+    <section style="top:-440px;">
       
       <img src="../../../image/까칠이.png" alt="comet" class="layer comet" data-speed="-7">
       <img src="../../../image/버럭이.png" alt="earth" class="layer oneP" data-speed="8">
