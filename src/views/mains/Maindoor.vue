@@ -179,29 +179,29 @@ body {
 </style>
 
 <style>
-  * {
+  /* * {
   margin: 0;
   padding: 0;
 
-}
+} */
 
-html, body {
-  /* background-color: black; */
+/* html, body {
+  background-color: black;
   height: 100%;
   touch-action: none; 
-}
+}  */
 
-
+/* 
 body {
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
-  /* display: flex; */
+  display: flex;
   -webkit-perspective: 1000px;
           perspective: 1000px;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-}
+} */
 
 #drag-container, #spin-container {
   position: relative; 

@@ -91,7 +91,7 @@ html, body {
 .entire-content {
 	margin: auto;
 	width: 190px;
-	perspective: 100%;
+	perspective: 1000px;
 	position: relative;
 	padding-top: 80px;
   background-color: #000;

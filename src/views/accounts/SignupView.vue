@@ -95,6 +95,9 @@ $(document).ready(function() {
 </script>
 
 <style>
+html {
+  background-color: #F3EFE4;
+}
 .textbox { 
   position: relative; 
   width: 30%; 

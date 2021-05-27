@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="background-color:#F3EFE4">
   <center>
     <h1>Today Movie</h1>
     <img width="500" height="500" src="../../../image/1.png" alt="">
@@ -167,7 +167,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
   select#feel option[value="버럭"]   { background-color: red;   }
 /* select#feel option[value="others"] { background-image:url(others.png); }  */
 </style>

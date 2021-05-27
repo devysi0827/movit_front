@@ -27,8 +27,10 @@
       </div>
     </span>
     <span v-else>
-      <router-link :to="{ name: 'Signup' }">Signup</router-link> |
-      <router-link :to="{ name: 'Login' }">Login</router-link> 
+      <div id="nav" style="background-color: #F3EFE4;">
+        <router-link :to="{ name: 'Signup' }">Signup</router-link> |
+        <router-link :to="{ name: 'Login' }">Login</router-link>
+      </div> 
     </span>
     <router-view @login="isLogin = true"/>
   </div>
@@ -59,7 +61,9 @@ export default {
 </script>
 
 <style>
-
+html {
+  background-color: #F3EFE4;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
