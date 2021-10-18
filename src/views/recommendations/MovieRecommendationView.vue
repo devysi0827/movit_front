@@ -160,7 +160,7 @@ export default {
       // api 영화정보 받기
       axios({
       method: 'get',
-      url: `https://api.themoviedb.org/3/movie/popular?api_key=6b1e9899f17fa92429f5a793999dcb8f&page=${this.select_random}`,
+      url: `https://api.themoviedb.org/3/movie/popular?api_key=${this.your_key}&page=${this.select_random}`,
       })
       .then((res)=>{
         console.log(res)

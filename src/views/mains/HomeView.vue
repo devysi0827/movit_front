@@ -36,7 +36,7 @@ export default {
     },
 
     getMovies() {
-      axios.get('https://api.themoviedb.org/3/movie/popular?api_key=6b1e9899f17fa92429f5a793999dcb8f') 
+      axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.your_key}`) 
       .then((res) => {this.movies = res.data.results})
     },
 
